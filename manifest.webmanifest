@@ -1,0 +1,9 @@
+{
+  "name": "Ôn luyện N2",
+  "short_name": "N2",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#e8e2d6",
+  "theme_color": "#e8e2d6",
+  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}
