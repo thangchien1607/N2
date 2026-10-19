@@ -108,10 +108,6 @@ main{flex:1;display:flex;flex-direction:column;width:100%}
 .ex .m{color:var(--text-2);font-size:14px}
 ruby{ruby-position:over}
 rt{font-size:.55em;color:var(--blue);font-family:var(--jp)}
-.mask rt,.mask .mk{background:repeating-linear-gradient(45deg,#444,#444 6px,#333 6px,#333 12px);color:transparent;border-radius:3px;cursor:pointer}
-.mk{display:inline-block;min-width:3em;padding:0 4px}
-.mask.shown rt,.mask.shown .mk{background:none;color:var(--blue)}
-.mask.shown .mk{color:var(--text-2)}
 
 .nav{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:18px;flex-wrap:wrap}
 .nb{padding:11px 18px;border-radius:12px;font-weight:700;font-size:14px;background:var(--card);border:1px solid var(--line);color:var(--text-2);transition:.15s}
@@ -325,9 +321,9 @@ function backHTML(c){
   return `<div class="back-head"><div class="big g">${esc(c.p)}</div><div class="mean">${esc(c.m)}</div></div>
     <div class="rows">
       <div class="row"><div class="lb">Cấu trúc</div><div class="jp">${esc(c.s)}</div></div>
-      <div class="row"><div class="lb">Ví dụ <span style="text-transform:none;font-weight:500">(chạm để hiện furigana / nghĩa)</span></div>
-        <div class="jp mask" data-mask style="font-size:18px;line-height:2.1">${c.jf ? ruby(c.jf) : esc(c.j)}</div>
-        <div class="mask" data-mask style="margin-top:4px"><span class="mk">${esc(c.v)}</span></div>
+      <div class="row"><div class="lb">Ví dụ</div>
+        <div class="jp" style="font-size:18px;line-height:2.1">${c.jf ? ruby(c.jf) : esc(c.j)}</div>
+        <div style="margin-top:4px;color:var(--text-2)">${esc(c.v)}</div>
       </div>
     </div>`;
 }
@@ -535,8 +531,6 @@ document.addEventListener('click', e => {
   if(t.closest('#shuf')){ S.shuffled = !S.shuffled; S.order = null; resetCard(); render(); return; }
   if(t.closest('[data-pick-first]')){ S.units[S.type] = [UNITS[S.type][0].id]; resetCard(); saveState(); render(); return; }
   if(t.closest('[data-go-quiz]')){ S.mode = 'quiz'; resetQuiz(); saveState(); render(); return; }
-  const msk = t.closest('[data-mask]');
-  if(msk){ msk.classList.toggle('shown'); return; }
   if(t.closest('#fc')){ S.flip = !S.flip; $('#fc').classList.toggle('flip', S.flip); return; }
   if(t.closest('#prev')) return go(-1);
   if(t.closest('#next')) return go(1);
