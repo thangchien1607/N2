@@ -1,6 +1,6 @@
-const CACHE = 'n2-v1';
+const CACHE = 'n2-v2';
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(['./', 'index.html', 'manifest.webmanifest', 'icon.svg'])));
+  e.waitUntil(caches.open(CACHE).then(c => c.addAll(['./', 'index.html', 'data.js', 'manifest.webmanifest', 'icon.svg'])));
   self.skipWaiting();
 });
 self.addEventListener('activate', e => {
